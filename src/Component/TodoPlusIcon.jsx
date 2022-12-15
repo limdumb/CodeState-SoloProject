@@ -1,5 +1,10 @@
+import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 
+export default function TodoPlusIcon({menuHandler}) {
 
-export default function TodoPlusIcon(){
-  
+  return (
+      <div className="Plus__Icon__Section" onClick={()=> menuHandler()}>
+        <MapsUgcIcon fontSize="large"/>
+      </div>
+  );
 }
