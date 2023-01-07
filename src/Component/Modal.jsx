@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -14,21 +15,26 @@ const ModalContainer = styled.div`
 `;
 
 export default function Modal({ showModal, userData, setUserData }) {
-  //userData.push(e.target.value)
   const [inputValue, setInputValue] = useState('')
   const [inputValue1, setInputValue1] = useState('')
   const [inputValue2, setInputValue2] = useState('')
 
   const inputValueSubmit = () => {
     const data = {
-      id: userData.length+1 ,
+      id: `${userData.length+1}` ,
       title: inputValue,
       content: inputValue1,
-      date: inputValue2
+      date: inputValue2,
+      check: 'false'
     }
+
+    axios.post('http://localhost:7777/created',data).then((res)=> {
+      console.log(res)
+    })
 
     setUserData([...userData, data])
   }
+  
   return (
     <>
       {showModal ? (
